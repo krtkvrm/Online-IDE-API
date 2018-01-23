@@ -1,0 +1,31 @@
+{
+  "name": "online-ide-api",
+  "version": "0.0.1",
+  "description": "API Webservice to Run Programs for Online IDEs and Online Judges Edit",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vkartik97/Online-IDE-API.git"
+  },
+  "keywords": [
+    "node",
+    "expressjs",
+    "shelljs"
+  ],
+  "author": "Kartik Verma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vkartik97/Online-IDE-API/issues"
+  },
+  "homepage": "https://github.com/vkartik97/Online-IDE-API#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "hbs": "^4.0.1",
+    "multer": "^1.3.0",
+    "shelljs": "^0.8.1"
+  }
+}
