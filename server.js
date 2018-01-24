@@ -22,12 +22,13 @@ app.use(multer.array());
 
 app.use(express.static(__dirname + '/includes'))
 
-//app.use('/run', run)
+app.use('/run', run)
+
 
 app.use((req, res) => {
     res.send("404 Error")
 })
 
 var server = app.listen(SERVER_PORT, (err) => {
-    console.log('Server Running on Port : ' + server.address().port )
+    console.log('Server Started! on Port : ' + server.address().port )
 })
