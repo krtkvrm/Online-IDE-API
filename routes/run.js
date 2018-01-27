@@ -4,11 +4,14 @@ const shell = require('shelljs')
 
 const fs = require('fs')
 
-route.post('/', (req, res, next) => {
+let cExec = (req, res) => {
 
-    let filePath = "/home/kartik/Programming/API_Programs/one.c"
+    let inFilePath = "/home/kartik/Programming/API_Programs/inputf.in"
 
-    fs.writeFile(filePath, req.body.program, (error) => {
+    fs.writeFileSync(inFilePath, req.body.inputf)
+
+    let filePathCode = "/home/kartik/Programming/API_Programs/one.c"
+    fs.writeFile(filePathCode, req.body.program, (error) => {
         if(error) throw error
 
         shell.cd('/home/kartik/Programming/API_Programs')
@@ -17,10 +20,10 @@ route.post('/', (req, res, next) => {
             if(code === 0)
             {
 
-                shell.exec('./a.out', {silent: true}, (code, stdout, stderr) => {
+                shell.exec('./a.out<inputf.in', {silent: true}, (code, stdout, stderr) => {
 
-
-                    res.send(stdout)
+                    if(stdout === req.body.output)
+                        res.send(stdout)
                     shell.exec('rm a.out', {silent: true})
                 })
             }
@@ -30,6 +33,14 @@ route.post('/', (req, res, next) => {
             }
         })
     })
+}
+
+route.post('/', (req, res, next) => {
+
+console.log(req.body.lang)
+    if(req.body.lang === 'c')
+        cExec(req, res)
+
 })
 
 module.exports = route
