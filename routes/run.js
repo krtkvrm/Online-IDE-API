@@ -42,7 +42,6 @@ let cExec = (req, res) => {
 }
 
 route.post('/', (req, res, next) => {
-    console.log(req.body.lang)
     if(req.body.lang === 'c')
         cExec(req, res)
 

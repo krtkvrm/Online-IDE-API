@@ -4,7 +4,8 @@
   "description": "API Webservice to Run Programs for Online IDEs and Online Judges Edit",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "mocha --exit"
   },
   "repository": {
     "type": "git",
@@ -23,9 +24,15 @@
   "homepage": "https://github.com/vkartik97/Online-IDE-API#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "express": "^4.16.2",
     "hbs": "^4.0.1",
+    "mocha": "^5.0.0",
     "multer": "^1.3.0",
-    "shelljs": "^0.8.1"
+    "node-mocks-http": "^1.6.6",
+    "request": "^2.83.0",
+    "shelljs": "^0.8.1",
+    "should": "^13.2.1"
   }
 }

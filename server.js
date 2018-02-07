@@ -8,7 +8,7 @@ const fs = require('fs')
 
 const app = express()
 
-const SERVER_PORT = process.env.PORT || 8080
+const SERVER_PORT = process.env.PORT || 8000
 
 app.use(bodyParser.json());
 
@@ -24,3 +24,5 @@ app.use((req, res) => {
 var server = app.listen(SERVER_PORT, (err) => {
     console.log('Server Started! on Port : ' + server.address().port )
 })
+
+module.exports = app
