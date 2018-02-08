@@ -22,6 +22,7 @@ app.use((req, res) => {
 })
 
 var server = app.listen(SERVER_PORT, (err) => {
+    app.set('baseDIR', __dirname)
     console.log('Server Started! on Port : ' + server.address().port )
 })
 
