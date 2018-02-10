@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Online IDE API | Website</title>
+    <title>Online IDE API | OpenOJ</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -30,12 +30,73 @@
         <div class="container">
             <h2 class="text-center text-uppercase text-secondary mb-0" id="portfolio">Documentation</h2>
             <hr class="star-dark mb-5">
-
+            <h4 class="font-weight-light mb-0">Installation</h4>
+            <ul>
+                <li>Clone the Repository<br><code>$ git clone https://github.com/vkartik97/Online-IDE-API</code></li>
+                <li>Install Dependencies<br><code>$ npm install</code></li>
+                <li>Test for Compilers and Interpreters on the System<br><code>$ npm test</code></li>
+                <li>Run the Application<br><code>$ npm start</code></li>
+            </ul>
+            <h4 class="font-weight-light mb-0">API</h4>
+            <ul>
+                <li>API is Called on  <code>localhost:8000/run</code> by default, can be changned in <code>server.js</code></li>
+                <li>API Request contains following data in JSON:
+                    <ul>
+                        <li><b>program</b>: Source code of program in base64</li>
+                        <li><b>lang</b>: Programming Language of the Source Code</li>
+                        <li><b>inputf</b>: input to the program via STDIN</li>
+                        <li><b>output</b>: output to the program via STOUT</li>
+                    </ul>
+                    Example :<br>
+                    <code>
+                            {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"program": "aSA9IGludChpbnB1dCgpKQ0KDQpwcmludChpKzEsIGVuZD0nJyk=",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"lang": "py3",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"inputf": "1",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"output": "2"<br>
+                              }<br>
+                    </code>
+                </li>
+                <li>API Response contains following data in JSON:
+                        <ul>
+                            <li><b>result</b>: The Result of Execution with input and output.
+                                <ul>
+                                    <li><b>AC</b>: All Correct, input matches with output</li>
+                                    <li><b>WA</b>: Wrong, input doesnt matche with output</li>
+                                    <li><b>ERR</b>: Error in Program</li>
+                                </ul>
+                            </li>
+                            <li><b>error</b>: The error message, if result is ERR</li>
+                            <li><b>output</b>: output of execuition</li>
+                        </ul>
+                        Example for AC:<br>
+                        <code>
+                            {
+                                "result": "AC",
+                                "output": "2"
+                            }
+                        </code><br>
+                        Example for WA:<br>
+                        <code>
+                            {
+                                "result": "WA",
+                                "output": "5"
+                            }
+                        </code><br>
+                        Example for ERR:<br>
+                        <code>
+                                {
+                                    "result": "ERR",
+                                    "error": "39a226b1-18c4-425b-a8c5-793ebf550afb.c: In function ‘main’:\n39a226b1-18c4-425b-a8c5-793ebf550afb.c:7:9: warning: implicit declaration of function ‘prinatf’; did you mean ‘printf’? [-Wimplicit-function-declaration]\n         prinatf(\"%d\", a+3);\r\n         ^~~~~~~\n         printf\n/tmp/ccpcyQRH.o: In function `main':\n39a226b1-18c4-425b-a8c5-793ebf550afb.c:(.text+0x44): undefined reference to `prinatf'\ncollect2: error: ld returned 1 exit status\n"
+                                }
+                        </code>
+                    </li>
+            </ul>
         </div>
     </section>
     <div class="copyright py-4 text-center text-white">
         <div class="container">
-            <small>Project  &copy; 2018 Online IDE API | Kartik Verma</small>
+            <small> &copy; 2018 Online IDE API | Kartik Verma</small>
         </div>
     </div>
     <script src="js/jquery.min.js"></script>
