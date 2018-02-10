@@ -16,12 +16,14 @@ let cExec = (req, res) => {
             {
                 shell.exec('./a.out<inputf.in', {silent: true}, (code, stdout, stderr) => {
                     if(stdout === req.body.output)
-                        res.send({
-                            "result": "AC"
-                        })
+                    res.send({
+                        "result": "AC",
+                        "output": stdout
+                    })
                     else
                     res.send({
-                        "result": "WA"
+                        "result": "WA",
+                        "output": stdout
                     })
                     shell.exec('rm a.out', {silent: true})
                 })
@@ -50,11 +52,13 @@ let py3Exec = (req, res) => {
             {
                 if(stdout === req.body.output)
                     res.send({
-                        "result": "AC"
+                        "result": "AC",
+                        "output": stdout
                     })
                     else
                     res.send({
-                        "result": "WA"
+                        "result": "WA",
+                        "output": stdout
                     })
             }
             else
